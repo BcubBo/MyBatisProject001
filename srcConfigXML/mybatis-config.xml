@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<environment id="development">
 		<!-- 配置事务管理 -->
 		<transactionManager type="JDBC"></transactionManager>
-		<!-- POOLED是Mybatis的数据源 -->
+		<!-- POOLED是Mybatis的数据源 JNDI基于tomcat的数据源-->
 		<dataSource type="POOLED">
 			<property name="driver" value="${driver}"/>
 			<property name="url" value="${url}"/>
