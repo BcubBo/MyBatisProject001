@@ -1,5 +1,8 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -85,20 +88,49 @@ public class UserDaoTest {
 		SqlSession sqlSession = null;
 		try {
 			User user = new User();
-			user.setId(41);
+			user.setId(40);
 			sqlSession = MyBatisUtil.createSqlSession();
 			sqlSession.delete("dao.UserMapper.delete",user);
 			sqlSession.commit();
 			logger.debug("delete提交成功");
 		} catch (Exception e) {
 			logger.debug("delete方法删除失败");
-			e.printStackTrace();
 			sqlSession.rollback();
 			e.printStackTrace();
+			
 		}finally {
 			logger.debug("delete方法关闭成功");
 			MyBatisUtil.closeSqlSesion(sqlSession);
 		}
+	}
+	@Test
+	public void getUserListTest() {
+		
+		SqlSession sqlSession = null;
+		
+		
+		try {
+			List<User> userList = new ArrayList<User>();
+			sqlSession = MyBatisUtil.createSqlSession();
+			userList = sqlSession.selectList("dao.UserMapper.getUserList");
+			sqlSession.commit();
+			logger.debug("查询成功");
+			for(User user:userList) {
+				logger.debug("查询出的对象的属性值为:"+user.getUserCode());
+			}
+			
+			
+			
+		} catch (Exception e) {
+			logger.debug("全查询方法失败");
+			sqlSession.rollback();
+			e.printStackTrace();
+		}finally {
+			logger.debug("全查询方法关闭成功");
+			MyBatisUtil.closeSqlSesion(sqlSession);
+		}
+		
+		
 	}
 
 }
