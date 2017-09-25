@@ -44,9 +44,9 @@ public class UserDaoTestByMapperInterface {
 			
 			try {
 				User user = new User();
-				user.setUserCode("bcubbo");
-				user.setUserName("bo");
-				user.setUserPassword("bcubbo");
+				user.setUserCode("bcubbo1");
+				user.setUserName("bo1");
+				user.setUserPassword("bcubbo1");
 				sqlSession = MyBatisUtil.createSqlSession();
 				sqlSession.getMapper(UserMapper.class).add(user);
 				sqlSession.commit();
