@@ -13,6 +13,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.junit.Test;
 
+import pojo.User;
+
 import org.junit.Assert;
 
 public class UserTest {
@@ -47,6 +49,36 @@ public class UserTest {
 		
 		
 		
+	}
+	////
+	
+	
+	@Test
+	public void addTest() {
+		String resource = "mybatis-config.xml";
+		SqlSession sqlSession = null;
+		
+		try {
+			User user = new User();
+			user.setUserCode("bcubbo");
+			user.setUserName("bo");
+			user.setUserPassword("bcubbo");
+			InputStream is = Resources.getResourceAsStream(resource);
+			SqlSessionFactory factory =  new SqlSessionFactoryBuilder().build(is);
+			sqlSession = factory.openSession();
+			sqlSession.insert("dao.UserMapper.add",user);
+			sqlSession.commit();
+		}catch(Exception e) {
+			logger.debug("添加失败");
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			
+			sqlSession.close();
+			logger.debug("添加成功关闭成功");
+			
+		
+		}
 	}
 
 }
