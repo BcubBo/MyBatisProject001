@@ -11,6 +11,7 @@ import org.apache.logging.log4j.core.Logger;
 import org.junit.Test;
 
 import dao.UserMapper;
+import pojo.Role;
 import pojo.User;
 import util.MyBatisUtil;
 
@@ -136,6 +137,37 @@ public class UserDaoTestByMapperInterface {
 			}
 			
 			
+		}
+		//
+		@Test
+		//不要忘了Test注解
+		public void getUserListByRoleIdTest() {
+			
+			SqlSession sqlSession = null;
+			try {
+				
+				List<User> userList = new ArrayList<User>();
+				sqlSession  = MyBatisUtil.createSqlSession();
+				Role role = new Role();
+				role.setId(1);
+				userList  = sqlSession.getMapper(UserMapper.class).getUserListByRoleId(role);
+				sqlSession.commit();
+				logger.debug("提交成功");
+				for(User user:userList) {
+					logger.debug("用户:"+user.getUserName());
+					logger.debug("用户角色:"+user.getRoleName());
+					logger.debug("用户代码:"+user.getUserCode());
+					logger.debug("用户Id:"+user.getId());
+				}
+				
+				
+			}catch(Exception e) {
+				logger.debug("查询失败回滚");
+				e.printStackTrace();
+			}finally {
+				MyBatisUtil.closeSqlSesion(sqlSession);
+				logger.debug("关闭会话");
+			}
 		}
 
 

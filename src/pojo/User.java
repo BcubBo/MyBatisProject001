@@ -6,7 +6,8 @@ public class User {
 	private String userName;
 	private String userCode;
 	private String userPassword;
-	
+	private Integer roleId;
+	private String roleName;
 	
 	
 	
@@ -35,6 +36,18 @@ public class User {
 	}
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
+	}
+	public Integer getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 	
 	

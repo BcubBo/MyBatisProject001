@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"D:\JARPack\mybatisJAR\dtd\mybatis-3-mapper.dtd">
+"D:\JARPack\SSMJAR\dtd\mybatis-3-mapper.dtd">
 <mapper namespace="dao.UserMapper">
 	<select id="count" resultType="int">
 		select count(1) from user
@@ -20,5 +20,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserList" resultType="pojo.User">
 		select * from user
 	</select>
+	<!-- 使用ResultMap -->
+	<resultMap type="pojo.User" id="userMap">
+		<result property="id" column="id"/>
+		<result property="userName" column="userName"/>
+		<result property="userCode" column="userCode"/>
+		<result property="roleName" column="roleName"/>
+	</resultMap>
+	
+	<select id="getUserListByRoleId" parameterType="pojo.Role" resultMap="userMap">
+		select u.*,r.roleName as roleName from user u,role r where u.roleId = r.id and u.roleId = #{id}
+	</select>
+	
+	
 	
 </mapper>
