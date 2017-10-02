@@ -46,6 +46,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserListByRoleId" parameterType="pojo.Role" resultMap="userMap">
 		select u.*,r.id as r_id ,r.roleName,r.roleCode from user u,role r where u.roleId=r.id and u.roleId=#{id}
 	</select>
+	<!-- collection使用 -->
+	<resultMap type="pojo.User" id="userMapAddress">
+		<id property="id" column="userId"/>
+		<result property="userName" column="userName"/>
+		<collection property="addressList" ofType="pojo.Address">
+			<id property="id" column="a_id"/>
+			<result property="postCode" column="postCode"/>
+			<result property="addressContent" column="addressContent"/>
+		</collection>
+	</resultMap>
+	<select id="getAddressListByUserId" parameterType="pojo.User" resultMap="userMapAddress">
+		select *,a.id as a_id from user u,address a where u.id=a.userId and u.id=#{id}
+	</select>
+	
 	
 	
 </mapper>

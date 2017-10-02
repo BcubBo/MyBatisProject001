@@ -14,7 +14,7 @@ public class User {
 	
 	private List<Role> roleList;
 	
-	
+	private List<Address> addressList;
 	
 	
 	
@@ -68,6 +68,12 @@ public class User {
 	}
 	public void setRoleList(List<Role> roleList) {
 		this.roleList = roleList;
+	}
+	public List<Address> getAddressList() {
+		return addressList;
+	}
+	public void setAddressList(List<Address> addressList) {
+		this.addressList = addressList;
 	}
 	
 	

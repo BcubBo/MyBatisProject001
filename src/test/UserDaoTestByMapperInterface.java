@@ -11,6 +11,7 @@ import org.apache.logging.log4j.core.Logger;
 import org.junit.Test;
 
 import dao.UserMapper;
+import pojo.Address;
 import pojo.Role;
 import pojo.User;
 import util.MyBatisUtil;
@@ -171,6 +172,37 @@ public class UserDaoTestByMapperInterface {
 				MyBatisUtil.closeSqlSesion(sqlSession);
 				logger.debug("关闭会话");
 			}
+		}
+		
+		//
+		@Test
+		public void getAddressListByUserId() {
+			SqlSession sqlSession = null;
+			try {
+				
+				sqlSession = MyBatisUtil.createSqlSession();
+				User user = new User();
+				user.setId(1);
+				User u2 = sqlSession.getMapper(UserMapper.class).getAddressListByUserId(user);
+				sqlSession.commit();
+				for(Address as:u2.getAddressList()) {
+					logger.debug("用户名称:"+u2.getUserName());
+					logger.debug("邮编地址:"+as.getAddressContent());
+					logger.debug("邮编号码:"+as.getPostCode());
+	
+				}
+				
+				
+			}catch(Exception e) {
+				logger.debug("异常回滚");
+				e.printStackTrace();
+			}finally {
+				logger.debug("关闭");
+				MyBatisUtil.closeSqlSesion(sqlSession);
+			}
+			
+			
+			
 		}
 
 

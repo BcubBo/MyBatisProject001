@@ -17,5 +17,8 @@ public interface UserMapper {
 	//根据RoleId获取用户列表
 	
 	public List<User> getUserListByRoleId(Role role);
+	
+	//获取指定用户的地址列表
+	public User getAddressListByUserId(User user);
 
 }
