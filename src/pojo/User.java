@@ -1,5 +1,7 @@
 package pojo;
 
+import java.util.List;
+
 public class User {
 	
 	private Integer id;
@@ -8,6 +10,12 @@ public class User {
 	private String userPassword;
 	private Integer roleId;
 	private String roleName;
+	private Role role;
+	
+	private List<Role> roleList;
+	
+	
+	
 	
 	
 	
@@ -48,6 +56,18 @@ public class User {
 	}
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public List<Role> getRoleList() {
+		return roleList;
+	}
+	public void setRoleList(List<Role> roleList) {
+		this.roleList = roleList;
 	}
 	
 	

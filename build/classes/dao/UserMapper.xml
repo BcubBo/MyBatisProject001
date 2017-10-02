@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from user
 	</select>
 	<!-- 使用ResultMap -->
-	<resultMap type="pojo.User" id="userMap">
+<!-- 	<resultMap type="pojo.User" id="userMap">
 		<result property="id" column="id"/>
 		<result property="userName" column="userName"/>
 		<result property="userCode" column="userCode"/>
@@ -30,8 +30,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getUserListByRoleId" parameterType="pojo.Role" resultMap="userMap">
 		select u.*,r.roleName as roleName from user u,role r where u.roleId = r.id and u.roleId = #{id}
+	</select> -->
+	<!-- 使用RoleId获取用户列表使用association -->
+	<resultMap type="pojo.User" id="userMap">
+		<result property="id" column="id"/>
+		<result property="userCode" column="userCode"/>
+		<result property="userName" column="userName"/>
+		<result property="roleName" column="roleName"/>
+		<association property="role" javaType="pojo.Role">
+			<result property="id" column="r_id"/>
+			<result property="roleCode" column="roleCode"/>
+			<result property="roleName" column="roleName"/>
+		</association>
+	</resultMap>
+	<select id="getUserListByRoleId" parameterType="pojo.Role" resultMap="userMap">
+		select u.*,r.id as r_id ,r.roleName,r.roleCode from user u,role r where u.roleId=r.id and u.roleId=#{id}
 	</select>
-	
 	
 	
 </mapper>

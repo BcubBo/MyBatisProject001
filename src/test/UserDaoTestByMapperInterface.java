@@ -158,6 +158,9 @@ public class UserDaoTestByMapperInterface {
 					logger.debug("用户角色:"+user.getRoleName());
 					logger.debug("用户代码:"+user.getUserCode());
 					logger.debug("用户Id:"+user.getId());
+					logger.debug("role对象id:"+user.getRole().getId());
+					logger.debug("role对象代码:"+user.getRole().getRoleCode());
+					logger.debug("role对象名称:"+user.getRole().getRoleName());
 				}
 				
 				
