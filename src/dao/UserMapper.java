@@ -20,5 +20,14 @@ public interface UserMapper {
 	
 	//获取指定用户的地址列表
 	public User getAddressListByUserId(User user);
+	
+	//通过动态sql的方式进行查询
+	public List<User> searchUserList(User user);
+	
+	//根据部门条件获取用户列表使用foreach
+	
+	public List<User> getUserByDepId(String[] depIds);
+	
+	
 
 }

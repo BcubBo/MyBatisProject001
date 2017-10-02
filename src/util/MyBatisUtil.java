@@ -37,14 +37,14 @@ public class MyBatisUtil {
 		logger.debug("factory:"+factory);
 		return factory.openSession();
 	}
-	public static void closeSqlSesion(SqlSession sqlSession) {
+	public static void closeSqlSession(SqlSession sqlSession) {
 		if(null!=sqlSession) {
 			
 			sqlSession.close();
 			
 		}
 	}
-	
+
 	
 
 }

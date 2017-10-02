@@ -11,9 +11,9 @@ public class User {
 	private Integer roleId;
 	private String roleName;
 	private Role role;
-	
+	private String depId;
+	private String depName;
 	private List<Role> roleList;
-	
 	private List<Address> addressList;
 	
 	
@@ -74,6 +74,18 @@ public class User {
 	}
 	public void setAddressList(List<Address> addressList) {
 		this.addressList = addressList;
+	}
+	public String getDepId() {
+		return depId;
+	}
+	public void setDepId(String depId) {
+		this.depId = depId;
+	}
+	public String getDepName() {
+		return depName;
+	}
+	public void setDepName(String depName) {
+		this.depName = depName;
 	}
 	
 	
