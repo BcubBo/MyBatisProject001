@@ -12,7 +12,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<package name="pojo"/>
 </typeAliases> -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- 配置MyBatis的log实现为Log4j -->
+=======
+>>>>>>> f96b16a01775594d610d91d0aa236a9da8c9d16e
 =======
 >>>>>>> f96b16a01775594d610d91d0aa236a9da8c9d16e
 <settings>
